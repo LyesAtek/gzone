@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var uri = 'mongodb://admin:admin@ds053708.mlab.com:53708/heroku_c37tjzdd';
+var uri = 'mongodb://admin:admin@ds133221.mlab.com:33221/heroku_mkpbh0hc';
 module.exports = function (app) {
     app.mongoose = mongoose.connect(uri,function (err,db) {
         if (err)
