@@ -5,8 +5,10 @@ module.exports = function(app){
         login: require('./login')(app),
         update:require('./update')(app),
         delete: require('./delete')(app),
-        getFriends: require('./friends/get')(app),
-        createFriend: require('./friends/create')(app),
-        deleteFriend: require('./friends/delete')(app)
+        getFriends: require('././get')(app),
+        createFriend: require('././create')(app),
+        deleteFriend: require('././delete')(app),
+        createFriendRequest: require('././create')(app),
+        deleteFriendRequest: require('././delete')(app)
     };
 };

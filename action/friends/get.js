@@ -17,7 +17,6 @@ module.exports = function (app) {
                     promises.push(query);
                     }
                     q.all(promises).then(function(results){
-                        console.log(JSON.stringify(results));
                         res.send(results)
                     })
 

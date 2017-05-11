@@ -22,11 +22,11 @@ module.exports = function (app) {
             datetimeRegister: req.body.datetimeRegister,
             datetimeLastLogin: req.body.datetimeLastLogin
         });
-        user.save(function (err,obj) {
+        user.save(function (err,result) {
             if (err) {
                 return res.status(500).send({error: err});
             }
-            res.send({id: obj._id});
+            res.send({id: result._id});
         });
     }
 };

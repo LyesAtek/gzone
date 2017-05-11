@@ -4,15 +4,15 @@ module.exports = function (app) {
         var id = req.params.id;
         user.findOne({
             _id:id
-        },function (err,obj) {
+        },function (err,result) {
             if(err){
                 return res.status(500).send({error: err});
             }
             else{
-                if (obj!=null) {
-                    obj.id = obj._id;
-                    delete obj._id;
-                    res.send(obj)
+                if (result!=null) {
+                    result.id = result._id;
+                    delete result._id;
+                    res.send(result)
                 }
                 else
                     res.send({error: 'User not found'});

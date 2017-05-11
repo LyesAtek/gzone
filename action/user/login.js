@@ -9,15 +9,15 @@ module.exports = function (app) {
         };
         login.indexOf('@') === -1 ? options.username = login : options.email = login;
 
-        user.findOne(options, function (err, obj) {
+        user.findOne(options, function (err, result) {
             if (err){
                 return res.status(500).send({error: err});
             }
             else {
 
-                if (obj != null)
+                if (result != null)
                     res.send({
-                        id: obj._id,
+                        id: result._id,
                         token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
                     });
                 else

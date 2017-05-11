@@ -10,4 +10,5 @@ module.exports = function (app) {
     });
     app.model = {};
     app.model.user = require('./user')(app);
+    app.model.friendRequest = require('./friendRequest')(app);
 };

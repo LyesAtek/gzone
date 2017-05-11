@@ -1,12 +1,12 @@
 module.exports = function (app) {
     return function (req, res) {
         var user =  app.model.user;
-        user.update({_id:req.params.id}, req.body, function (err, obj) {
+        user.update({_id:req.params.id}, req.body, function (err, result) {
             if(err){
                 return res.status(500).send({error: err});
             }
             else{
-                if (obj!=null) {
+                if (result!=null) {
                     res.send({});
                 }
                 else

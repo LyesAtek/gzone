@@ -5,15 +5,11 @@ var bodyparser = require('body-parser').json();
 module.exports = function (app) {
     router.get('/:id',
         bodyparser,
-        app.actions.user.getFriends
-    );
-    router.post('/:id',
-        bodyparser,
-        app.actions.user.createFriend
+        app.actions.friends.get
     );
     router.delete('/:id',
         bodyparser,
-        app.actions.user.deleteFriend
+        app.actions.friends.delete
     );
     return router;
 };
