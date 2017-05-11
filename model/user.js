@@ -81,7 +81,13 @@ module.exports = function (app) {
             datetimeLastLogin: {
                 type: Date,
                 required: false
+            },
+            friends: {
+                type: [app.mongoose.Schema.Types.ObjectId],
+                required : false
+
             }
+
         });
 
     var user = app.mongoose.model('user', userSchema);
