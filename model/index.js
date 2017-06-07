@@ -11,4 +11,12 @@ module.exports = function (app) {
     app.model = {};
     app.model.user = require('./user')(app);
     app.model.friendRequest = require('./friendRequest')(app);
+    app.model.test = require('./test')(app);
+    app.model.image = require('./image')(app);
+    app.model.video = require('./video')(app);
+    app.model.live = require('./live')(app);
+    app.model.post = require('./post')(app);
+    app.model.opinion = require('./opinion')(app);
+    app.model.trick = require('./trick')(app);
+    app.model.comment = require('./comment')(app);
 };

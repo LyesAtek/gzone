@@ -28,7 +28,8 @@ module.exports = function (app) {
             },
             email: {
                 type: String,
-                required: true
+                required: true,
+                unique: true
             },
             username: {
                 type: String,
@@ -39,55 +40,54 @@ module.exports = function (app) {
                 required: true
             },
             avatar: {
-                type: String,
-                required: false
+                type: String
             },
             description: {
-                type: String,
-                required: false
+                type: String
             },
             facebook: {
-                type: String,
-                required: false
+                type: String
             },
             twitter: {
-                type: String,
-                required: false
+                type: String
             },
             steam: {
-                type: String,
-                required: false
+                type: String
             },
             youtube: {
-                type: String,
-                required: false
+                type: String
             },
             twitch: {
-                type: String,
-                required: false
+                type: String
             },
             website: {
-                type: String,
-                required: false
+                type: String
             },
             certified: {
                 type: Boolean,
-                required: false
+                default: false
             },
             datetimeRegister: {
                 type: Date,
-                required: false
+                default: Date.now
             },
             datetimeLastLogin: {
-                type: Date,
-                required: false
+                type: Date
             },
             friends: {
                 type: [app.mongoose.Schema.Types.ObjectId],
-                required : false
+                default: []
 
+            },
+            followers: {
+                type: [app.mongoose.Schema.Types.ObjectId],
+                default: []
+
+            },
+            subscribers: {
+                type: [app.mongoose.Schema.Types.ObjectId],
+                default: []
             }
-
         });
 
     var user = app.mongoose.model('user', userSchema);

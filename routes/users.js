@@ -3,7 +3,11 @@ var router = express.Router();
 var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
-  router.get('/:id',
+  router.get('/',
+      bodyparser,
+      app.actions.user.list
+  );
+  router.get('/:userId',
       bodyparser,
       app.actions.user.get
   );
@@ -16,12 +20,12 @@ module.exports = function (app) {
       app.actions.user.login
   );
   
-  router.put('/:id',
+  router.put('/:userId',
       bodyparser,
       app.actions.user.update
   );
   
-  router.delete('/:id',
+  router.delete('/:userId',
       bodyparser,
       app.actions.user.delete
   );

@@ -3,17 +3,9 @@ module.exports = function (app) {
     return function (req, res) {
         var user = app.model.user;
         var friendRequest = app.model.friendRequest;
-        var senderId = app.mongoose.Types.ObjectId(req.body.senderId);
-        var receiverId = app.mongoose.Types.ObjectId(req.body.receiverId);
-        var sender = {};
-        var receiver = {};
+        var requestId = req.params.requestId;
 
-        if (!senderId || !receiverId) {
-            res.status(400).send({error: "Bad request"});
-        }
-
-        friendRequest.findOne({senderId: senderId, receiverId: receiverId}, function (err, result) {
-            console.log(JSON.stringify(result));
+        friendRequest.findOne({_id: requestId}, function (err, result) {
             if (err) {
                 console.error(err);
                 res.status(500).send({error: "Server error, please try again later"});
@@ -21,16 +13,16 @@ module.exports = function (app) {
             else if(!result || !result.state){
                 res.status(404).send({error: "Friend request not found"});
             }
-            else if(result.state == "Accepted"){
-                res.status(403).send({error: "Sender is already friends with receiver"});
+            else if(result.state == "accepted"){
+                res.status(403).send({error: "Friend request already accepted"});
             }
-            else if(result.state == "Denied"){
-                res.status(403).send({error: "Sender has been blocked by receiver"});
+            else if(result.state == "denied"){
+                res.status(403).send({error: "Friend request already denied"});
             }
             else {
-                updateFriendRequestState(senderId, receiverId)
+                updateFriendRequestState(requestId)
                     .then(function () {
-                        return setUsersAsFriends(senderId, receiverId);
+                        return setUsersAsFriends(result.senderId, result.receiverId);
                     })
                     .then(function () {
                         res.send({});
@@ -43,12 +35,11 @@ module.exports = function (app) {
 
         //////////////////////////////////
 
-        function updateFriendRequestState(senderId, receiverId) {
+        function updateFriendRequestState(requestId) {
             var deferred = q.defer();
             friendRequest.update({
-                senderId: senderId,
-                receiverId: receiverId
-            }, {$set: {state: "Accepted"}}, function (err, result) {
+                _id: requestId
+            }, {$set: {state: "accepted"}}, function (err, result) {
                 if (err) {
                     deferred.reject(err);
                 }

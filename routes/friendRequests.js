@@ -11,9 +11,21 @@ module.exports = function (app) {
       bodyparser,
       app.actions.friendRequests.delete
   );
-  router.post('/accept',
+  router.put('/accept/:requestId',
       bodyparser,
       app.actions.friendRequests.accept
+  );
+  router.put('/deny/:requestId',
+      bodyparser,
+      app.actions.friendRequests.deny
+  );
+  router.get('/sent/:userId',
+      bodyparser,
+      app.actions.friendRequests.getSentRequests
+  );
+  router.get('/received/:userId',
+      bodyparser,
+      app.actions.friendRequests.getReceivedRequests
   );
   return router;
 };

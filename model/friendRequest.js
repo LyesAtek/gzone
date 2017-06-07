@@ -1,4 +1,6 @@
 'use strict';
+var uniqueValidator = require('mongoose-unique-validator');
+
 module.exports = function (app) {
     var friendRequestSchema = app.mongoose.Schema(
         {
@@ -20,10 +22,11 @@ module.exports = function (app) {
             },
             state: {
                 type: String,
-                default: "Pending"
+                default: "pending"
             }
         });
-
+    friendRequestSchema.index({senderId:1, receiverId:1}, {unique: true});
+    friendRequestSchema.plugin(uniqueValidator);
     var friendRequest = app.mongoose.model('friendRequest', friendRequestSchema);
     return friendRequest;
 };

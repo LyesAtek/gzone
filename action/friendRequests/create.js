@@ -10,14 +10,17 @@ module.exports = function (app) {
 
         friendRequest.save(function (err, result) {
                 if (err) {
+                    if(err.errors && err.errors.receiverId && err.errors.senderId){
+                     return res.status(403).send({error: "Friend request already sent"});
+                    }
                     return res.status(500).send({error: err});
                 }
                 else {
                     if (result) {
-                        res.send({});
+                        res.status(201).send({});
                     }
                     else
-                        res.send({error: "User update failed"});
+                        res.status(500).send({error: "User update failed"});
                 }
             });
     }
