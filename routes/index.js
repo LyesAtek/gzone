@@ -12,4 +12,6 @@ module.exports = function (app) {
   app.use('/opinions',require('./opinions')(app));
   app.use('/tricks',require('./tricks')(app));
   app.use('/comments',require('./comments')(app));
+  app.use('/games',require('./games')(app));
+  app.use('/categories',require('./categories')(app));
 };

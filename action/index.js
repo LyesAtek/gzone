@@ -13,4 +13,6 @@ module.exports = function (app) {
     app.actions.opinions = require('./opinions')(app);
     app.actions.tricks = require('./tricks')(app);
     app.actions.comments = require('./comments')(app);
+    app.actions.games = require('./games')(app);
+    app.actions.categories= require('./categories')(app);
 };

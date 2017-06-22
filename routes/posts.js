@@ -7,6 +7,10 @@ module.exports = function (app) {
         bodyparser,
         app.actions.posts.get
     );
+    router.get('/',
+        bodyparser,
+        app.actions.posts.list
+    );
     router.get('/user/:userId',
         bodyparser,
         app.actions.posts.userList

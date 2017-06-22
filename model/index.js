@@ -19,4 +19,6 @@ module.exports = function (app) {
     app.model.opinion = require('./opinion')(app);
     app.model.trick = require('./trick')(app);
     app.model.comment = require('./comment')(app);
+    app.model.game = require('./game')(app);
+    app.model.category = require('./category')(app);
 };

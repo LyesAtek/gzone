@@ -1,6 +1,6 @@
 module.exports = function (app) {
     return function (req, res) {
-        var comment = app.model.post;
+        var comment = app.model.comment;
         var commentId = req.params.commentId;
 
         comment.remove({_id: commentId}, function (err) {
