@@ -1,4 +1,8 @@
 module.exports = function (app) {
+
+  app.use('/aws',require('./aws')(app));
+
+
   app.use('/users',require('./users')(app));
   app.use('/friends',require('./friends')(app));
   app.use('/friendRequests',require('./friendRequests')(app));

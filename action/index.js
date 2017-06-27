@@ -1,5 +1,8 @@
 module.exports = function (app) {
     app.actions = {};
+
+    app.actions.aws = require('./aws')(app);
+
     app.actions.user = require('./users')(app);
     app.actions.friends = require('./friends')(app);
     app.actions.friendRequests = require('./friendRequests')(app);

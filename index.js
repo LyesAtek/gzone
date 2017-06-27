@@ -6,7 +6,7 @@ var server = require('http').Server(app);
   require('./model')(app);
   require('./action')(app);
   require('./routes')(app);
-
+  require('./config')(app);
 }());
 
 server.listen(process.env.PORT ||port,function(err){

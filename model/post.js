@@ -6,6 +6,10 @@ module.exports = function (app) {
                 type: app.mongoose.Schema.Types.ObjectId,
                 required: true
             },
+            author: {
+                type: String,
+                required: true
+            },
             text: {
                 type: String,
                 required: true
