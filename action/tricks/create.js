@@ -12,7 +12,7 @@ module.exports = function (app) {
             }
             else {
                 if (result) {
-                    res.status(201).send({});
+                    res.status(201).send({_id: result._id});
                 }
                 else
                     res.status(500).send({error: "Trick post failed"});

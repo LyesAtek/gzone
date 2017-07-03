@@ -67,6 +67,12 @@ module.exports = function (app) {
                 type: Boolean,
                 default: false
             },
+            longitude:{
+                type: Number
+            },
+            latitude:{
+                type: Number
+            },
             datetimeRegister: {
                 type: Date,
                 default: Date.now

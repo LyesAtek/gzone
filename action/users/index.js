@@ -2,6 +2,7 @@ module.exports = function(app){
     return {
         get: require('./get')(app),
         list: require('./list')(app),
+        locationList: require('./locationList')(app),
         create: require('./create')(app),
         login: require('./login')(app),
         update:require('./update')(app),

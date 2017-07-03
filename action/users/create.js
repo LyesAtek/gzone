@@ -19,6 +19,8 @@ module.exports = function (app) {
             twitch : req.body.twitch,
             website : req.body.website,
             certified: req.body.certified,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
             datetimeRegister: req.body.datetimeRegister,
             datetimeLastLogin: req.body.datetimeLastLogin,
             friends: [],
