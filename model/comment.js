@@ -14,25 +14,8 @@ module.exports = function (app) {
                 type: String,
                 required: true
             },
-            likes: {
-                type: Number,
-                default: 0
-            },
-            pows: {
-                type: Number,
-                default: 0
-            },
-            comments: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
-            },
-            images: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
-            },
-            videos: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
+            video: {
+                type: String
             },
             datetimeCreated: {
                 type: Date,

@@ -21,4 +21,6 @@ module.exports = function (app) {
     app.model.comment = require('./comment')(app);
     app.model.game = require('./game')(app);
     app.model.category = require('./category')(app);
+    app.model.client = require('./client')(app);
+    app.model.token = require('./token')(app);
 };

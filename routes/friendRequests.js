@@ -1,30 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
   router.post('',
-    bodyparser,
+    app.oauth.authorise(),
       app.actions.friendRequests.create
   );
   router.delete('',
-      bodyparser,
+      app.oauth.authorise(),
       app.actions.friendRequests.delete
   );
   router.put('/accept/:requestId',
-      bodyparser,
+      app.oauth.authorise(),
       app.actions.friendRequests.accept
   );
   router.put('/deny/:requestId',
-      bodyparser,
+      app.oauth.authorise(),
       app.actions.friendRequests.deny
   );
   router.get('/sent/:userId',
-      bodyparser,
+      app.oauth.authorise(),
       app.actions.friendRequests.getSentRequests
   );
   router.get('/received/:userId',
-      bodyparser,
+      app.oauth.authorise(),
       app.actions.friendRequests.getReceivedRequests
   );
   return router;

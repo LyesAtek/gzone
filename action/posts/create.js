@@ -3,13 +3,16 @@ module.exports = function (app) {
         var userModel = app.model.user;
         var post = new app.model.post({
             userId: req.body.userId,
+            gameId: req.body.gameId,
             text: req.body.text,
             likes: req.body.likes,
-            pows: req.body.pows,
+            author: req.body.author,
             comments: req.body.comments,
-            images: req.body.images,
-            videos: req.body.videos,
-            datetimeCreated: req.body.datetimeCreated
+            image: req.body.image,
+            video: req.body.video,
+            datetimeCreated: req.body.datetimeCreated,
+            mark: req.body.mark,
+            flagOpinion: req.body.flagOpinion
         });
 
         userModel.findOne({_id: req.body.userId}, function(err, user){

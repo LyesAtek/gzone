@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
-    router.post('/upload',
-        app.oauth.authorise(),
-        app.actions.aws.upload
+    router.post('',
+        bodyparser,
+        app.actions.clients.create
     );
     return router;
 };

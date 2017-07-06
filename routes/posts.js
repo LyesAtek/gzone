@@ -1,26 +1,37 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/:postId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.posts.get
     );
     router.get('/',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.posts.list
     );
     router.get('/user/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.posts.userList
     );
+    router.get('/game/:gameId',
+        app.oauth.authorise(),
+        app.actions.posts.gameList
+    );
+    router.get('/followers/:userId',
+        app.oauth.authorise(),
+        app.actions.posts.followedUsersList
+    );
+    router.get('/likes/top',
+        app.oauth.authorise(),
+        app.actions.posts.likesList
+    );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.posts.create
     );
     router.delete('/:postId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.posts.delete
     );
     return router;

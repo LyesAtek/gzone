@@ -1,26 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/:opinionId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.opinions.get
     );
     router.get('/user/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.opinions.userList
     );
     router.get('/test/:testId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.opinions.testList
     );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.opinions.create
     );
     router.delete('/:opinionId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.opinions.delete
     );
     return router;

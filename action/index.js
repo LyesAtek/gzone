@@ -18,4 +18,5 @@ module.exports = function (app) {
     app.actions.comments = require('./comments')(app);
     app.actions.games = require('./games')(app);
     app.actions.categories= require('./categories')(app);
+    app.actions.clients = require('./clients')(app);
 };

@@ -6,6 +6,9 @@ module.exports = function (app) {
                 type: app.mongoose.Schema.Types.ObjectId,
                 required: true
             },
+            gameId: {
+                type: app.mongoose.Schema.Types.ObjectId
+            },
             author: {
                 type: String,
                 required: true
@@ -15,28 +18,25 @@ module.exports = function (app) {
                 required: true
             },
             likes: {
-                type: Number,
-                default: 0
-            },
-            pows: {
-                type: Number,
-                default: 0
+                type: [app.mongoose.Schema.Types.ObjectId],
+                default: []
             },
             comments: {
                 type: [app.mongoose.Schema.Types.ObjectId],
                 default: []
             },
-            images: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
+            flagOpinion: {
+                type: Boolean
             },
-            videos: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
+            video: {
+                type: String
             },
             datetimeCreated: {
                 type: Date,
                 default: Date.now
+            },
+            mark:{
+                type: Number
             }
         });
     var post = app.mongoose.model('post', postSchema);

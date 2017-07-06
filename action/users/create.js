@@ -1,38 +1,28 @@
 module.exports = function (app) {
     return function (req, res, next) {
         var user = new app.model.user({
-            firstName:req.body.firstName,
-            lastName:req.body.lastName,
+            reply: req.body.reply,
+            score: req.body.score,
             dateOfBirth:req.body.dateOfBirth,
-            address:req.body.address,
-            city:req.body.city,
-            country:req.body.country,
             email:req.body.email,
             username: req.body.username,
             password : req.body.password,
             avatar :req.body.avatar,
             description : req.body.description,
-            facebook : req.body.facebook,
-            twitter : req.body.twitter,
-            steam : req.body.steam,
-            youtube : req.body.youtube,
-            twitch : req.body.twitch,
-            website : req.body.website,
-            certified: req.body.certified,
             longitude: req.body.longitude,
             latitude: req.body.latitude,
             datetimeRegister: req.body.datetimeRegister,
-            datetimeLastLogin: req.body.datetimeLastLogin,
-            friends: [],
-            followers: [],
-            subscribers: []
+            followedUsers: req.body.followedUsers,
+            followedGames: req.body.followedGames,
+            connected: req.body.connected
         });
         user.save(function (err,result) {
             if (err) {
-                console.error(err);
-                res.status(500).send({error: "Server error, please try again later"});
+                return res.status(500).send({error: err});
             }
-            res.status(201).send({_id: result._id});
+            else{
+                return res.status(201).send({_id: result._id});
+            }
         });
     }
 };

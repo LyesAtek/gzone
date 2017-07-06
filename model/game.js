@@ -2,24 +2,16 @@
 module.exports = function (app) {
     var gameSchema = app.mongoose.Schema(
         {
-            userId: {
-                type: app.mongoose.Schema.Types.ObjectId,
-                required: true
-            },
             name: {
                 type: String,
                 required: true
             },
-            smallName: {
-                type: String,
-                required: false
-            },
-            franchise:{
-                type: String,
-                required: false
+            followersId: {
+                type: [app.mongoose.Schema.Types.ObjectId],
+                default: []
             },
             platforms: {
-                type: [app.mongoose.Schema.Types.ObjectId],
+                type: [String],
                 default: []
             },
             developer: {
@@ -30,12 +22,8 @@ module.exports = function (app) {
                 type: String,
                 required: true
             },
-            categoriesId: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
-            },
-            ratings: {
-                type: [Number],
+            categories: {
+                type: [String],
                 default: []
             },
             synopsis:{
@@ -55,10 +43,6 @@ module.exports = function (app) {
                 required: true
             },
             website:{
-                type: String,
-                required: false
-            },
-            wallpaper:{
                 type: String,
                 required: false
             },

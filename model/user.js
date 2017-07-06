@@ -2,28 +2,12 @@
 module.exports = function (app) {
     var userSchema = app.mongoose.Schema(
         {
-            firstName: {
+            reply:{
                 type: String,
-                required: true
-            },
-            lastName: {
-                type: String,
-                required: true
+                required:  true
             },
             dateOfBirth: {
                 type: Date,
-                required: true
-            },
-            address: {
-                type: String,
-                required: true
-            },
-            city: {
-                type: String,
-                required: true
-            },
-            country: {
-                type: String,
                 required: true
             },
             email: {
@@ -42,31 +26,6 @@ module.exports = function (app) {
             avatar: {
                 type: String
             },
-            description: {
-                type: String
-            },
-            facebook: {
-                type: String
-            },
-            twitter: {
-                type: String
-            },
-            steam: {
-                type: String
-            },
-            youtube: {
-                type: String
-            },
-            twitch: {
-                type: String
-            },
-            website: {
-                type: String
-            },
-            certified: {
-                type: Boolean,
-                default: false
-            },
             longitude:{
                 type: Number
             },
@@ -77,22 +36,21 @@ module.exports = function (app) {
                 type: Date,
                 default: Date.now
             },
-            datetimeLastLogin: {
-                type: Date
-            },
-            friends: {
+            followedUsers: {
                 type: [app.mongoose.Schema.Types.ObjectId],
                 default: []
-
             },
-            followers: {
+            followedGames: {
                 type: [app.mongoose.Schema.Types.ObjectId],
                 default: []
-
             },
-            subscribers: {
-                type: [app.mongoose.Schema.Types.ObjectId],
-                default: []
+            score:{
+                type: Number,
+                default: 0
+            },
+            connected:{
+                type: Boolean,
+                default: false
             }
         });
 

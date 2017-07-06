@@ -10,12 +10,12 @@ module.exports = function (app) {
             }
             else{
                 if (result) {
-                    res.send(result)
+                    return res.send(result)
                 }
-                else
-                    res.status(404).send({error: 'Resource not found'});
+                else{
+                    return res.status(404).send({error: 'Resource not found'});
+                }
             }
         });
-
     }
 };

@@ -3,6 +3,8 @@ module.exports = function(app){
         get: require('./get')(app),
         list: require('./list')(app),
         locationList: require('./locationList')(app),
+        followedUsersList: require('./followedUsersList')(app),
+        followedGamesList: require('./followedGamesList')(app),
         create: require('./create')(app),
         login: require('./login')(app),
         update:require('./update')(app),

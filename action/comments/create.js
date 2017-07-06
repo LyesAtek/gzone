@@ -4,11 +4,7 @@ module.exports = function (app) {
             userId: req.body.userId,
             postId: req.body.postId,
             text: req.body.text,
-            likes: req.body.likes,
-            pows: req.body.pows,
-            comments: req.body.comments,
-            images: req.body.images,
-            videos: req.body.videos,
+            video: req.body.video,
             datetimeCreated: req.body.datetimeCreated
         });
         comment.save(function (err, result) {

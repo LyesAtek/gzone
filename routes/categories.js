@@ -1,26 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.categories.list
     );
     router.get('/:categoryId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.categories.get
     );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.categories.create
     );
     router.put('/:categoryId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.categories.update
     );
     router.delete('/:categoryId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.categories.delete
     );
     return router;

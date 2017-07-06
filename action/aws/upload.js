@@ -6,8 +6,6 @@ module.exports = function (app) {
         else {
             var directoryName = req.body.directoryName;
             var file  = new Buffer(req.body.file, 'base64');
-          //  new Buffer(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
-
             var fileName = req.body.fileName;
             var fileType = req.body.fileType;
 
@@ -26,7 +24,6 @@ module.exports = function (app) {
                 }
                 else {
                     var result = {
-
                         url: 'https://s3.ca-central-1.amazonaws.com/g-zone/' +directoryName + '/'+ fileName
                     };
                     res.status(200).json(result);

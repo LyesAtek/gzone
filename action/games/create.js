@@ -1,14 +1,12 @@
 module.exports = function (app) {
     return function (req, res, next) {
         var game = new app.model.game({
-            userId: req.body.userId,
             name: req.body.name,
-            smallName: req.body.smallName,
-            franchise: req.body.franchise,
+            followersId: req.body.followersId,
             platforms: req.body.platforms,
             developer: req.body.developer,
             editor: req.body.editor,
-            categoriesId: req.body.categoriesId,
+            categories: req.body.categories,
             ratings: req.body.ratings,
             synopsis: req.body.synopsis,
             solo: req.body.solo,

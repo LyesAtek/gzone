@@ -1,22 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/:id',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.tricks.get
     );
     router.get('/list/:id',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.tricks.list
     );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.tricks.create
     );
     router.delete('/:id',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.tricks.delete
     );
     return router;

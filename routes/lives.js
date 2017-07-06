@@ -1,26 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/:liveId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.lives.get
     );
     router.get('/user/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.lives.userList
     );
     router.get('/game/:gameId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.lives.gameList
     );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.lives.create
     );
     router.delete('/:liveId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.lives.delete
     );
     return router;

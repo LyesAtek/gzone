@@ -1,30 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.list
     );
     router.get('/:gameId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.get
     );
     router.get('/:gameId/:categoryId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.categoryList
     );
     router.post('',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.create
     );
     router.put('/:gameId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.update
     );
     router.delete('/:gameId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.games.delete
     );
     return router;

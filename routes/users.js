@@ -1,36 +1,44 @@
 var express = require('express');
 var router = express.Router();
-var bodyparser = require('body-parser').json();
+var bodyParser = require('body-parser').json();
 
 module.exports = function (app) {
     router.get('/',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.list
     );
     router.get('/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.get
     );
+    router.get('/followed-users/:userId',
+        app.oauth.authorise(),
+        app.actions.user.followedUsersList
+    );
+    router.get('/followed-games/:userId',
+        app.oauth.authorise(),
+        app.actions.user.followedUsersList
+    );
     router.get('/location/:minLongitude/:maxLongitude/:minLatitude/:maxLatitude',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.locationList
     );
     router.post('',
-        bodyparser,
+        bodyParser,
         app.actions.user.create
     );
     router.post('/login',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.login
     );
 
     router.put('/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.update
     );
 
     router.delete('/:userId',
-        bodyparser,
+        app.oauth.authorise(),
         app.actions.user.delete
     );
     return router;
