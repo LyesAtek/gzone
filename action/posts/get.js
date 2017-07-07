@@ -15,7 +15,8 @@ module.exports = function (app) {
                 else
                     res.status(404).send({error: 'Resource not found'});
             }
-        });
+        })
+            .sort({datetimeCreated : -1});
 
     }
 };

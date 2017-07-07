@@ -12,7 +12,8 @@ module.exports = function (app) {
             video: req.body.video,
             datetimeCreated: req.body.datetimeCreated,
             mark: req.body.mark,
-            flagOpinion: req.body.flagOpinion
+            flagOpinion: req.body.flagOpinion,
+            receiverId: req.body.receiverId
         });
 
         userModel.findOne({_id: req.body.userId}, function(err, user){

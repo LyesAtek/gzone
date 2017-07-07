@@ -37,7 +37,11 @@ module.exports = function (app) {
             },
             mark:{
                 type: Number
+            },
+            receiverId:{
+                type: app.mongoose.Schema.Types.ObjectId
             }
+
         });
     var post = app.mongoose.model('post', postSchema);
     return post;
