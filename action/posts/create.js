@@ -19,11 +19,10 @@ module.exports = function (app) {
             if(err){
                 res.status(500).send({});
             }
-            else if(!user._id){
+            else if(!user || !user._id){
                 res.status(404).send({error: "User not found"});
             }
             else{
-                post.author = user.firstName + ' ' + user.lastName;
                 post.save(function (err, result) {
                     if (err) {
                         return res.status(500).send({error: err});
