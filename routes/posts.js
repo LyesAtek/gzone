@@ -18,9 +18,17 @@ module.exports = function (app) {
         app.oauth.authorise(),
         app.actions.posts.gameList
     );
+    router.get('/received/:userId',
+        app.oauth.authorise(),
+        app.actions.posts.receivedList
+    );
     router.get('/followers/:userId',
         app.oauth.authorise(),
         app.actions.posts.followedUsersList
+    );
+    router.put('/:postId',
+        app.oauth.authorise(),
+        app.actions.posts.update
     );
     router.get('/likes/top',
         app.oauth.authorise(),

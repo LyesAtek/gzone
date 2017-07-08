@@ -7,6 +7,8 @@ module.exports = function(app){
         followedUsersList: require('./followedUsersList')(app),
         likesList: require('./likesList')(app),
         create: require('./create')(app),
-        delete: require('./delete')(app)
+        delete: require('./delete')(app),
+        receivedList: require('./receivedList')(app),
+        update: require('./update')(app)
     };
 };
