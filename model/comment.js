@@ -6,10 +6,6 @@ module.exports = function (app) {
                 type: app.mongoose.Schema.Types.ObjectId,
                 required: true
             },
-            postId: {
-                type: app.mongoose.Schema.Types.ObjectId,
-                required: true
-            },
             text: {
                 type: String,
                 required: true
